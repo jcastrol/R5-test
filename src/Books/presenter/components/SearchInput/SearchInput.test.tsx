@@ -1,54 +1,56 @@
-import React from 'react'
-import {render, waitFor, fireEvent, screen} from '@testing-library/react'
-import axiosMock from 'axios'
-import SearchInput from '.'
+import React from "react";
+import { render, waitFor, fireEvent, screen } from "@testing-library/react";
+import SearchInput from ".";
 
 const book = {
-  id: 'SqikDwAAQBAJ',
+  id: "SqikDwAAQBAJ",
   volumeInfo: {
-    title: 'JavaScript - Aprende a programar en el lenguaje de la web',
+    title: "JavaScript - Aprende a programar en el lenguaje de la web",
     authors: ["Fernando Luna"],
     publishedDate: "2019-07-23",
     imageLinks: {
-      "smallThumbnail": "http://books.google.com/books/content?id=SqikDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "thumbnail": "http://books.google.com/books/content?id=SqikDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      smallThumbnail:
+        "http://books.google.com/books/content?id=SqikDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+      thumbnail:
+        "http://books.google.com/books/content?id=SqikDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
     },
-  }
-}
+  },
+};
 
-test('SearchInput: Should get books when SearchInput is mounted' ,async () => {
-  const setResponse = jest.fn()
-  const books = {items: [book]}
-  const response = {data: books}
-  axiosMock.get.mockResolvedValue(response)
+test("SearchInput: Should get books when SearchInput is mounted", async () => {
+  const setResponse = jest.fn();
 
-  render(<SearchInput setResponse={setResponse} />)
+  render(<SearchInput onSearch={setResponse} />);
   await waitFor(() => {
-    expect(setResponse).toBeCalledWith(response)
-  })
+    expect(screen.getByText(/GOOGLE BOOKS/i)).toBeInTheDocument();
+  });
+});
 
-})
+test("SearchInput: Should change value is showed in the input", async () => {
+  const setResponse = jest.fn();
 
+  render(<SearchInput onSearch={setResponse} />);
 
-test('SearchInput: Should get books when click on Buscar', async () => {
-  const setResponse = jest.fn()
-  const books = {items: [book]}
-  const response = {data: books}
-  axiosMock.get.mockResolvedValue(response)
-
-  render(<SearchInput setResponse={setResponse} />)
+  fireEvent.change(screen.getByPlaceholderText(/Buscar/i), {
+    target: { value: "javascript" },
+  });
   await waitFor(() => {
-    expect(setResponse).toBeCalledWith(response)
-  })
+    expect(screen.getByDisplayValue("javascript")).toBeDefined();
+  });
+});
 
-  fireEvent.change(screen.getByPlaceholderText(/Buscar/i),
-    { target: { value: 'javascript' } }
-  )
+test("SearchInput: Should call funtion onSearch when click on Buscar", async () => {
+  const setResponse = jest.fn();
 
-  fireEvent.click(screen.getByText('Buscar'))
+  render(<SearchInput onSearch={setResponse} />);
+
+  fireEvent.change(screen.getByPlaceholderText(/Buscar/i), {
+    target: { value: "javascript" },
+  });
+
+  fireEvent.click(screen.getByText("Buscar"));
 
   await waitFor(() => {
-    expect(setResponse).toBeCalledTimes(2)
-  })
-
-})
+    expect(setResponse).toBeCalledTimes(1);
+  });
+});
