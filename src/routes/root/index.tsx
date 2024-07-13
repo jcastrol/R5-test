@@ -10,7 +10,7 @@ const RootRouter = (props: Props) => {
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/bookstore/:bookId" element={<BookStorePage />} />
+      <Route path="/bookstore" element={<BookStorePage />} />
     </Routes>  
   </BrowserRouter>
   );

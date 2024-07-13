@@ -1,9 +1,10 @@
 import React from 'react'
-import Book , { BookType }from '../Book'
+import Book from '../Book'
 import './books.css'
+import { Book as BookModel } from '../../../domain/model/Book'
 
 export interface BooksProps {
-  books: BookType[]
+  books: BookModel[]
 }
 
 const Books = ({ books }: BooksProps) => {
