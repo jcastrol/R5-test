@@ -1,14 +1,20 @@
 import React from 'react'
-import { BookType } from '../../components/Book'
 import { useParams } from 'react-router-dom'
+import { Book } from '../../../domain/model/Book'
+import BookStoreViewModel from './BookStoreViewModel'
+import SearchInput from '../../components/SearchInput'
+import Books from '../../components/Books'
 
 type Props = {}
 
 const BookStorePage = (props: Props) => {
-    const [book, setBook] = React.useState<BookType | null>(null)
-    let { bookId } = useParams()
+  const { books, getBooks } = BookStoreViewModel()
+  
   return (
-    <div>index{bookId}</div>
+    <div>
+      <SearchInput onSearch={getBooks} />
+    {books && <Books books={books} /> }
+    </div>
   )
 }
 
