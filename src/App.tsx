@@ -1,22 +1,13 @@
 import React from 'react'
-import SearchInput from './components/SearchInput'
-import {BookType} from './components/Book'
-import Books from './components/Books'
 
-interface Response {
-  data?: {
-    items: BookType[]
-  }
-}
+import HomePage from './Books/presenter/pages/Home'
+
+
 
 const App = () =>  {
-  const [response, setResponse] = React.useState<Response>({})
-  return (
-    <div>
-      <SearchInput setResponse={setResponse} />
-	{response.data && <Books books={response.data.items} /> }
-    </div>
-  )
+ return(
+    <HomePage />
+ )
 }
 
 
