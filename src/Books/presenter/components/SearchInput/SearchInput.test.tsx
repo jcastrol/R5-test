@@ -20,7 +20,7 @@ const book = {
 test("SearchInput: Should get books when SearchInput is mounted", async () => {
   const setResponse = jest.fn();
 
-  render(<SearchInput onSearch={setResponse} />);
+  render(<SearchInput onSearch={setResponse} title="GOOGLE BOOKS"/>);
   await waitFor(() => {
     expect(screen.getByText(/GOOGLE BOOKS/i)).toBeInTheDocument();
   });
@@ -29,7 +29,7 @@ test("SearchInput: Should get books when SearchInput is mounted", async () => {
 test("SearchInput: Should change value is showed in the input", async () => {
   const setResponse = jest.fn();
 
-  render(<SearchInput onSearch={setResponse} />);
+  render(<SearchInput onSearch={setResponse} title="GOOGLE BOOKS"/>);
 
   fireEvent.change(screen.getByPlaceholderText(/Buscar/i), {
     target: { value: "javascript" },
@@ -42,7 +42,7 @@ test("SearchInput: Should change value is showed in the input", async () => {
 test("SearchInput: Should call funtion onSearch when click on Buscar", async () => {
   const setResponse = jest.fn();
 
-  render(<SearchInput onSearch={setResponse} />);
+  render(<SearchInput onSearch={setResponse} title="GOOGLE BOOKS"/>);
 
   fireEvent.change(screen.getByPlaceholderText(/Buscar/i), {
     target: { value: "javascript" },
