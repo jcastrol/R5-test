@@ -1,7 +1,9 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react'
-import axiosMock from 'axios'
 import App from './App'
+import apiBookGoogle from './Books/infrastructure/Fetch/apiGoogle'
+
+jest.mock('./Books/infrastructure/Fetch/apiGoogle');
 
 const book = {
   id: 'SqikDwAAQBAJ',
@@ -18,7 +20,8 @@ const book = {
 test('App: Should show books', async () => {
   const books = {items: [book]}
   const response = { data: books }
-  axiosMock.get.mockResolvedValue(response)
+  
+  apiBookGoogle.get.mockResolvedValue(response)
   render(<App />)
 
   const bookTitle = await screen.findByText(/javascript/i)

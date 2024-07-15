@@ -10,7 +10,7 @@ const HomePage = (props: Props) => {
     const { books, getBooks } = HomeViewModel()
     return (
       <div>
-        <SearchInput onSearch={getBooks} />
+        <SearchInput onSearch={getBooks} title='GOOGLE BOOKS'/>
       {books && <Books books={books} /> }
       </div>
     )

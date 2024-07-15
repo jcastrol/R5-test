@@ -2,10 +2,11 @@ import React, { ChangeEvent } from "react";
 import "./SearchInput.css";
 
 interface SearchInputProps {
+  title:string
   onSearch: Function;
 }
 
-const SearchInput = ({ onSearch }: SearchInputProps) => {
+const SearchInput = ({ onSearch,title }: SearchInputProps) => {
   const [searchValue, setSearchValue] = React.useState("");
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
@@ -14,7 +15,7 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
 
   return (
     <div className="search">
-      <h1>GOOGLE BOOKS</h1>
+      <h1>{title}</h1>
       <input
         className="search-input"
         type="text"

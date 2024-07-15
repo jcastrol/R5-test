@@ -1,0 +1,53 @@
+.bookdetail {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.bookdetail-image {
+  width:240px;
+  max-width: 50%;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #f0edf5;
+}
+
+.bookdetail-image img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.bookdetail-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:10px;
+  max-width: 70%;
+}
+
+.bookdetail-title {
+  color: #878787;
+  font-weight: bold;
+  padding-top: 10px;
+  font-size: 1.5em;
+}
+.bookdetail-description {
+  font-size: 1em;
+  color: #666;
+}
+@media (max-width: 768px) {
+  .bookdetail {
+    flex-direction: column;
+    align-items: center;
+  }
+  .bookdetail-image {
+    overflow: hidden;
+  }
+
+  
+}

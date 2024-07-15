@@ -1,6 +1,4 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import { Book } from '../../../domain/model/Book'
 import BookStoreViewModel from './BookStoreViewModel'
 import SearchInput from '../../components/SearchInput'
 import Books from '../../components/Books'
@@ -8,12 +6,12 @@ import Books from '../../components/Books'
 type Props = {}
 
 const BookStorePage = (props: Props) => {
-  const { books, getBooks } = BookStoreViewModel()
-  
+  const { books, getBooks ,navigateTo} = BookStoreViewModel()
+  console.log(books)
   return (
     <div>
-      <SearchInput onSearch={getBooks} />
-    {books && <Books books={books} /> }
+      <SearchInput onSearch={getBooks} title='OPENLIBRARY BOOKS'/>
+    {books && <Books books={books} navigateTo={navigateTo}/> }
     </div>
   )
 }

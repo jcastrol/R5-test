@@ -1,18 +1,29 @@
-import React from 'react'
-import Book from '../Book'
-import './books.css'
-import { Book as BookModel } from '../../../domain/model/Book'
+import React from "react";
+import Book from "../Book";
+import "./books.css";
+import { Book as BookModel } from "../../../domain/model/Book";
+import { useNavigate } from "react-router-dom";
 
 export interface BooksProps {
-  books: BookModel[]
+  books: BookModel[];
+  navigateTo?: (id: string) => void;
 }
 
-const Books = ({ books }: BooksProps) => {
+const Books = ({ books, navigateTo }: BooksProps) => {
   return (
     <div className="books">
-      {books.map(book => <Book key={book.id} book={book} />)} 
+      {books.map((book) => (
+        <div
+          key={book.id}
+          onClick={() => {
+            navigateTo && navigateTo(book.id);
+          }}
+        >
+          <Book book={book} />
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Books
+export default Books;

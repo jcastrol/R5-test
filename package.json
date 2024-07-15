@@ -42,5 +42,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://openlibrary.org/search.json"
+  "proxy": "https://openlibrary.org"
 }
