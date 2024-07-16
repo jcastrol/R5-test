@@ -2,7 +2,6 @@ import React from "react";
 import Book from "../Book";
 import "./books.css";
 import { Book as BookModel } from "../../../domain/model/Book";
-import { useNavigate } from "react-router-dom";
 
 export interface BooksProps {
   books: BookModel[];

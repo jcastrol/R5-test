@@ -1,8 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "../../Books/presenter/pages/Home";
-import BookStorePage from "../../Books/presenter/pages/BookStore";
-import BookDetailPage from "../../Books/presenter/pages/BookDetail";
+
+
+import HomePage from "../../Books/presenter/View/Book";
+import BookStorePage from "../../Books/presenter/View/BookStore";
+import BookDetailPage from "../../pages/BookDetailsPage.ts";
+
+
 
 type Props = {};
 

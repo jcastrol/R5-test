@@ -2,11 +2,11 @@ import React from "react";
 import "./book.css";
 import { Book as BookModel } from "../../../domain/model/Book";
 
-export interface BookProps {
+export interface BookDetailProps {
   book: BookModel;
 }
 
-const BookDetailComponent = ({ book }: BookProps) => (
+const BookDetailComponent = ({ book }: BookDetailProps) => (
   <div className="bookdetail">
     <div className="bookdetail-image">
       {book.image ? (

@@ -2,11 +2,13 @@ import React from 'react'
 import BookDetailViewModel from './BookDetailViewModel'
 import BookDetailComponent from '../../components/BookDetail'
 
-type Props = {}
+type Props = {
+  idBook:string
+}
 
-const BookDetailPage = (props: Props) => {
+const BookDetail = ({idBook}: Props) => {
   
-  const { book } = BookDetailViewModel()
+  const { book } = BookDetailViewModel(idBook)
   
   return (
     <div>
@@ -15,4 +17,4 @@ const BookDetailPage = (props: Props) => {
   )
 }
 
-export default BookDetailPage
+export default BookDetail

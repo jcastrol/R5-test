@@ -15,13 +15,18 @@ interface Link {
     };
   }
   
+  interface Description {
+    type: string;
+    value: string;
+  }
   interface DateTime {
     type: string;
     value: string;
   }
+
   
   export interface BookdetailDto {
-    description: string;
+    description: Description;
     links: Link[];
     title: string;
     covers: number[];
