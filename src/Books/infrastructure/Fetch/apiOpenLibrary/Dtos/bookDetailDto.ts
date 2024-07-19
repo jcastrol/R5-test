@@ -26,7 +26,7 @@ interface Link {
 
   
   export interface BookdetailDto {
-    description: Description;
+    description: Description | string;
     links: Link[];
     title: string;
     covers: number[];

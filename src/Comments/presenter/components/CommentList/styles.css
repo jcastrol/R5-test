@@ -1,0 +1,20 @@
+.comment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-item {
+  background-color: #fafafa;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.comment-item p {
+  margin: 0 0 5px 0;
+}
+
+.comment-item small {
+  color: #666;
+}

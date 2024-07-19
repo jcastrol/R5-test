@@ -7,7 +7,7 @@ type Props = {}
 
 const BookStorePage = (props: Props) => {
   const { books, getBooks ,navigateTo} = BookStoreViewModel()
-  console.log(books)
+  
   return (
     <div>
       <SearchInput onSearch={getBooks} title='OPENLIBRARY BOOKS'/>

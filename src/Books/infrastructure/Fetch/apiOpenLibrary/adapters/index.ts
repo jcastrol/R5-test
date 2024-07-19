@@ -15,19 +15,24 @@ export function transformBookDtoToBook(dto: BookDto): Book {
     };;
   }
 export function transformBookDetailDtoToBook(dto: BookdetailDto): Book {
-    console.log('BookdetailDto',dto.description)
-        const id = dto.key.split('/')[2] || 'unknown';
-        const title = dto.title || '';
-        const description = dto?.description?.value || '';
-        const author = dto.authors.length > 0 ? dto.authors[0].author.key.split('/').pop() || 'unknown' : 'unknown';
-        const image = dto.covers.length > 0 ? `${URLCover}id/${dto.covers[0]}-L.jpg` : '';
-      
-        return {
-          id,
-          title,
-          description,
-          author,
-          image
-        };
+    
+    let description=''
+    if(typeof dto.description ===  'string'){
+        description= dto?.description 
+    }else{
+        description=dto?.description?.value  || ''
+    }
+    const id = dto.key.split('/')[2] || 'unknown';
+    const title = dto.title || '';
+    const author = dto.authors.length > 0 ? dto.authors[0].author.key.split('/').pop() || 'unknown' : 'unknown';
+    const image = dto.covers.length > 0 ? `${URLCover}id/${dto.covers[0]}-L.jpg` : '';
+    
+    return {
+        id,
+        title,
+        description,
+        author,
+        image
+    };
   }
 
